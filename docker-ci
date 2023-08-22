@@ -1,0 +1,43 @@
+pipeline {
+    agent any
+    tools {
+        maven "maven3.8.6"
+    }
+    stages {
+        stage('1GitClone'){
+            steps{
+                sh "echo Cloning Repo"
+                git branch: 'main', url: 'https://github.com/ProfKelvin1/sysmsify-web-app.git'
+                sh "echo repo clones"
+            }
+        }
+        stage('2Build'){
+           steps{
+                sh "echo build artifact"
+                sh "mvn package"
+                sh "echo artifact created"
+            } 
+        }
+        stage('3Sonarqube'){
+           steps{
+                sh "echo quality check is about to start"
+                sh "mvn sonar:sonar"
+                sh "echo sonarqube passed"
+            } 
+        }
+        stage('4meessage'){
+           steps{
+                sh "echo CI job completed"
+            } 
+        }
+        stage('5DockerImage'){
+           steps{
+                sh "docker build -t sysmsify/maven-web-app ."
+                sh "echo Image is reeady"
+            } 
+        }
+    }
+}
+
+
+
