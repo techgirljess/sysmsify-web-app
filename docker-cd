@@ -1,0 +1,13 @@
+pipeline {
+    agent any
+    stages {
+        stage('1readyfordepeloyment'){
+            steps{
+                sh "echo deployment is ready"
+                sh "docker rm -f sysmsifyapp"
+                sh "docker run --name sysmsifyapp -d -p 2500:8080 sysmsify/maven-web-app"
+            }
+        }
+    }
+    
+}
