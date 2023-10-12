@@ -3,11 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 	
 	<groupId>com.mt</groupId>
-	<artifactId>maven-web-application</artifactId>
+	<artifactId>sysmsify-web-application</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.2-RELEASE</version>
 	
-	<name>maven-web-application</name>
+	<name>sysmsify-web-application</name>
 
 	<description>Maven Web Project for Java Project</description>
 
